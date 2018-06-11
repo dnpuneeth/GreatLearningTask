@@ -1,0 +1,161 @@
+// Place all the styles related to the Questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  font-family: serif;
+};
+
+h2 {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 500;
+  font-size: 2em;
+  color: #6ab9b5;
+}
+
+h3 {
+  font-family: 'lato';
+}
+
+.title {
+  font-family: 'lato';
+  font-size: 31px;
+  font-weight: 300;
+}
+
+.desp {
+  font-family: 'Arial';
+  font-size: 16px;
+  font-weight: 100;
+  margin-left: 0.8em;
+}
+
+.question {
+  margin: 20px;
+  border-bottom: 0.5px solid #ddd;
+};
+
+.mini-description:after {
+  margin: -10px;
+  color: rgba(255, 255, 255, 0.979);
+  width: 10px;
+  
+}
+
+body {
+  padding-top: 50px;
+}
+footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.shadow-textarea textarea.form-control::placeholder {
+  font-weight: 300;
+}
+.shadow-textarea textarea.form-control {
+  padding-left: 0.8rem;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding: 10px;
+    background: #c5c5c252;
+  }
+
+  .jumbotron p {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 350;
+    color: #a29e9eeb;
+    font-family: 'lato';
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    background:#ecf0f1;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -40%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 40%;
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 40%;
+    margin-left: 12px;
+  }
+}
+
+#sidebar {
+    padding:15px;
+    margin-top:10px;
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group !optional;
+}
+
+.navbar-default {
+  background: #30374a;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+  font-family: 'lato';
+  font-size: '400';
+  font-size: 16px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: yellow;
+}
+
+.show {
+  margin-top: 20px;
+}
+
+h6 {
+  margin-left: 1em;
+}
+
+label {
+  font-family: 'lato';
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#sidebar {
+  background: bisque;
+  margin-top: 1.5em;
+  margin-left: 5px;
+}
+
+.vbar {
+  border-left: thick solid #ff0000;
+}
+
+.vbar p {
+  padding-left: 1em;
+  font-family: 'lato';
+  font-size: 1.3em;
+  font-weight: 300;
+}

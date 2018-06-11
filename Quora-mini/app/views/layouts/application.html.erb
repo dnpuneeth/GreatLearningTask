@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QuoraMini</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', 'users', 'questions', 'comments', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'questions', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="navbar navbar-fixed-top navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Home', users_path %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    <%= yield(:alert) %>
+    <%= yield %>
+
+  </body>
+</html>

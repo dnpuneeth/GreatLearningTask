@@ -1,0 +1,9 @@
+<div class="cmtform">
+  <% if comment.comment%>
+    <% usr = User.find(comment.user_id)%>
+    <p class="uname"><%= usr.name.capitalize %></p>
+    <%= comment.comment %>
+    <p class="time"> on <%=comment.created_at.strftime('%b %d, %Y') %> </p>
+  </div>
+<% end %>
+<br >

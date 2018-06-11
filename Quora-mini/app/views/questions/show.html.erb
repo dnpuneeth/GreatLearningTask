@@ -1,0 +1,29 @@
+<div class="col-md-2">
+</div>
+
+<div class="col-md-8 show">
+  <div class="col-xs-1">
+    <%= image_tag('avathar.png', size: "40x50") %>
+  </div>
+  <p class='title'>
+    <%= @question.question %>
+  </p>
+  
+  <% usr = User.find(@question.user_id)%>
+  <% time = @question.created_at.strftime('%b %d, %Y')%>
+  <h6> Asked By <%= usr.name%> on <%= time %> </h6>
+  <p class='desp'>
+    <%= @question.description %>
+  </p>
+  
+  <div class="comments"> 
+    <h2> Comments </h2>
+    <%= render @question.comments %>
+  </div>
+
+  <h3> Leave a Comment: </h3>
+  <%= render 'comments/form' %>
+
+  <%= link_to 'All Questions', user_questions_path %> |
+  <%= link_to 'My Questions', user_myquestions_path(user_id: params[:user_id]) %>
+</div>

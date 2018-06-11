@@ -1,0 +1,8 @@
+<div class="col-md-2">
+</div>
+
+<div class="col-md-8 show">
+<h1>Editing Question</h1>
+<%= render partial: 'form', locals: { url: user_question_path(user_id: @question.user_id, id: @question.id)} %>
+<%= link_to 'Back', user_questions_path %>
+</div>

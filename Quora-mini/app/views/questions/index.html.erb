@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <div class="row row-offcanvas row-offcanvas-left">
+    <div class="col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+      <div class="sidebar-nav">
+        <h3> Welcome <%= @user.name.capitalize%> </h3>
+        <p class="status"> Total </p>
+        <div class="vbar">
+          <p> <%= pluralize(@questions.count, 'Question') %> </p>
+        </div>
+        <div class="vbar">
+          <p> <%= pluralize(@qn_comments.count, 'Comment') %> </p>
+        </div>
+        <p class="my-questions"><%= link_to 'My Questions', user_myquestions_path %></p>
+        <div class="vbar">
+          <p> <%= pluralize(@user_questions.count, 'Question') %> </p>
+        </div>
+        <div class="vbar">
+          <p> <%= pluralize(@user_qn_comments.count, 'Comment') %> </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-9">
+      <br>
+      <div class="jumbotron">
+        <a href="#" class="visible-xs" data-toggle="offcanvas"><i class="fa fa-lg fa-reorder"></i></a>
+        <h3> GreatLearning Q&A </h3>
+        <div>
+          <p> Ask Question </p>
+          <%= render partial: 'form', locals: { url: user_questions_path } %>
+        </div>
+        <h2> All Questions </h2>
+        <% @questions.each do |qn| %>
+          <div class="col-xs-1 img_index">
+            <%= image_tag('avathar.png', size: "40x80") %>
+          </div>
+          <div class="question">
+            <h3><%= qn.question %></h3> 
+            <p class="mini-description"><%= qn.description[0..150] %>...</p>
+            <%= link_to 'Show', user_question_path(user_id: @question.user.id, id: qn.id) %> |
+            <% if @question.user_id == qn.user.id %>
+              <%= link_to 'Edit', edit_user_question_path(user_id: qn.user.id, id: qn.id) %> |
+              <%= link_to 'Destroy', user_question_path(user_id: qn.user.id, id: qn.id),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %> |
+            <% end %>
+            <% cmt = @qn_comments.all.where(question_id: qn.id).count %>
+            <%= pluralize(cmt, 'Comment')%> |
+            <% time = qn.created_at.strftime('%b %d, %Y')%>
+            <%= time %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
+

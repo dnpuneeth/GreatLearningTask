@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <div class="row row-offcanvas row-offcanvas-left">
+    <div class="col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+      <div class="sidebar-nav">
+        <h3> <%= @user.name.capitalize%> </h3><br>
+        <div class="vbar">
+          <p> <%= pluralize(@questions.count, 'Question') %> </p>
+        </div>
+        <div class="vbar">
+          <p> <%= pluralize(@qn_comments.count, 'Comment') %> </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-9">
+      <br>
+      <div class="jumbotron">
+        <a href="#" class="visible-xs" data-toggle="offcanvas"><i class="fa fa-lg fa-reorder"></i></a>
+        <h2> Questions by You </h2>
+        <% if @questions.any? %>
+          <% @questions.each do |qn| %>
+            <div class="col-xs-1 img_index">
+              <%= image_tag('avathar.png', size: "40x80") %>
+            </div>
+            <div class="question">
+              <h3><%= qn.question %></h3> 
+              <p class="mini-description"><%= qn.description[0..150] %>...</p>
+              <%= link_to 'Show', user_question_path(user_id: @question.user.id, id: qn.id) %> |
+              <%= link_to 'Edit', edit_user_question_path(user_id: qn.user.id, id: qn.id) %> |
+              <%= link_to 'Destroy', user_question_path(user_id: qn.user.id, id: qn.id),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %> |
+              <% cmt = @qn_comments.all.where(question_id: qn.id).count %>
+              <%= pluralize(cmt, 'Comment')%> |
+              <% time = qn.created_at.strftime('%b %d, %Y')%>
+              <%= time %>
+            </div>
+          <% end %>
+          <%else%>
+            <h3> No Questions Yet!! <h3>
+        <% end %>
+        <%= link_to 'All Questions', user_questions_path %>
+      </div>
+    </div>
+
+  </div>
+</div>
+

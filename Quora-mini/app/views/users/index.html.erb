@@ -1,0 +1,15 @@
+<h1> Welcome </h1>
+
+<table class="table table-striped table-bordered col-md-8">
+  <tr>
+    <th> User Id </th>
+    <th> Name </th>
+  </tr>
+
+  <% @user.each do |usr| %>
+    <tr>
+      <td><%= usr.id %></td>
+      <td><%= link_to usr.name, user_questions_path(usr) %></td>
+    </tr>
+  <% end %>
+</table>
