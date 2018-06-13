@@ -8,4 +8,5 @@ class Question < ApplicationRecord
 
   scope :usr, lambda { |id| where(user_id: id) }
   scope :recent, -> { order('created_at desc') }
+  scope :type, lambda { |val| where(category: val) unless val.nil? }
 end

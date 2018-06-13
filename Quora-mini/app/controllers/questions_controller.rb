@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
     @user_questions = @questions.all.usr(@user.id).recent
     @qn_comments = Comment.cmt(@questions.pluck(:id))
     @user_qn_comments = Comment.cmt(@user_questions.pluck(:id))
+    @category = @questions.type(params[:category])
   end
 
   def show
@@ -59,7 +60,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:question, :description)
+    params.require(:question).permit(:question, :description, :category)
   end
 
   def set_question

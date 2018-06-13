@@ -21,7 +21,7 @@
         <div class="category rcorners">
           <ul>
             <% options_for_category.each do |category| %>
-              <li> <%= link_to category.first, '#' %> </li>
+              <li> <%= link_to category.first, category: category.first %> </li>
             <% end %>
           </ul>
         </div>
@@ -38,26 +38,33 @@
           <p> Ask Question </p>
           <%= render partial: 'form', locals: { url: user_questions_path } %>
         </div>
-        <h2> All Questions </h2>
-        <% @questions.each do |qn| %>
-          <div class="col-xs-1 img_index rounded">
-            <%= image_tag('avathar.png', size: "40x80") %>
-          </div>
-          <div class="question">
-            <h3><%= qn.question %></h3> 
-            <p class="mini-description"><%= qn.description[0..150] %>...</p>
-            <%= link_to 'Show', user_question_path(user_id: @question.user.id, id: qn.id) %> |
-            <% if @question.user_id == qn.user.id %>
-              <%= link_to 'Edit', edit_user_question_path(user_id: qn.user.id, id: qn.id) %> |
-              <%= link_to 'Destroy', user_question_path(user_id: qn.user.id, id: qn.id),
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %> |
-            <% end %>
-            <% cmt = @qn_comments.all.where(question_id: qn.id).count %>
-            <%= pluralize(cmt, 'Comment')%> |
-            <% time = qn.created_at.strftime('%b %d, %Y')%>
-            <%= time %>
-          </div>
+        
+        <% unless @category.empty? %>
+          <h2> All Questions </h2>
+          <% @category.each do |qn|%>
+            <div class="col-xs-1 img_index rounded">
+              <%= image_tag('avathar.png', size: "40x80") %>
+            </div>
+            <div class="question">
+              <h3><%= qn.question %></h3> 
+              <p class="mini-description"><%= qn.description[0..150] %>...</p>
+              <%= link_to 'Show', user_question_path(user_id: @question.user.id, id: qn.id) %> |
+              <% if @question.user_id == qn.user.id %>
+                <%= link_to 'Edit', edit_user_question_path(user_id: qn.user.id, id: qn.id) %> |
+                <%= link_to 'Destroy', user_question_path(user_id: qn.user.id, id: qn.id),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %> |
+              <% end %>
+              <% cmt = @qn_comments.all.where(question_id: qn.id).count %>
+              <%= pluralize(cmt, 'Comment')%> |
+              <% time = qn.created_at.strftime('%b %d, %Y')%>
+              <%= time %>
+            </div>
+          <% end %>
+        <% else %>
+          <% if @category.empty?%>
+            <%= link_to 'All Questions', user_questions_path %> 
+          <% end %>
         <% end %>
       </div>
     </div>
