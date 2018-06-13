@@ -17,7 +17,7 @@
         <div class="vbar">
           <p> <%= pluralize(@user_qn_comments.count, 'Comment') %> </p>
         </div>
-        <p class="status"> Q&A Categories </p>
+        <p class="status"> By Category </p>
         <div class="category rcorners">
           <ul>
             <% options_for_category.each do |category| %>
@@ -61,14 +61,10 @@
               <%= time %>
             </div>
           <% end %>
-        <% else %>
-          <% if @category.empty?%>
-            <%= link_to 'All Questions', user_questions_path %> 
-          <% end %>
         <% end %>
+        <%= link_to 'All Questions', user_questions_path %> 
       </div>
     </div>
-
   </div>
 </div>
 
