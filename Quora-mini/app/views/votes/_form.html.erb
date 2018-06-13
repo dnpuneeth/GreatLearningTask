@@ -1,7 +1,27 @@
-
-<% form_for @votes, url: user_question_comment_votes_path(comment_id: 1, question_id: 4)  do |f|%>
+<!--
+<% form_for @votes, url: user_question_comment_votes_path(comment_id: @votes.comment.id )  do |f|%>
   <% content_tag :button, :type => f.submit, :class => :positive do %>
-    <%= image_tag "avathar.png"%>
-   Save
+    <div class="votes">
+      <%= link_to user_question_comment_votes_path(comment_id: params[:id]) do %> 
+        <%= image_tag('upvote.png', size: '40x50') %>
+        <%= image_tag('downvote.png', size: '40x50') %>
+      <% end %>
+    </div> 
   <% end %>
 <% end %>
+-->
+<% upvote = 1 %>
+<% downvote = -1 %>
+<%= link_to user_question_comment_votes_path(comment_id: @votes.comment.id, votes: {vote: upvote}), method: :post do %>
+  <%=image_tag("upvote.png", size: '40x40')%>
+<% end%>
+<%= link_to user_question_comment_votes_path(comment_id: @votes.comment.id, votes: {vote: downvote}), method: :post do %>
+  <%=image_tag("downvote.png", size: '40x40')%>
+<% end%>
+
+<!--<div class="votes">
+      <%= link_to user_question_comment_votes_path(comment_id: params[:id]) do %> 
+        <%= image_tag('upvote.png', size: '40x50') %>
+        <%= image_tag('downvote.png', size: '40x50') %>
+      <% end %>
+    </div> --> 

@@ -2,16 +2,12 @@
   <% if comment.comment%>
     <% usr = User.find(comment.user_id)%>
     <p class="uname"><%= usr.name.capitalize %></p>
-    <p class="cmt"><%= comment.comment%></p>
+    <p class="cmt"><%= comment.comment%>  
+      <%= link_to '..More', user_question_comment_path(question_id: comment.question.id, id: comment.id) %>
+    </p>
     <p class="time"> 
-      <%= link_to 'Show', user_question_comment_path(question_id: comment.question.id, id: comment.id) %>
       on <%=comment.created_at.strftime('%b %d, %Y') %> 
     </p>
-    <p class="votes">
-      <%=link_to image_tag('upvote.png', size: '40x50'), {:action => 'create', :controller => 'votes'}%>
-      <%=link_to image_tag('downvote.png', size: '40x50'), {:action => 'create', :controller => 'votes'}%>
-    </p>
-    
     <!--
     <% content_tag :button, :type => :submit, :class => :positive do %>
       <%= image_tag("avathar.png")%>

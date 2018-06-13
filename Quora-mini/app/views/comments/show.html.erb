@@ -1,1 +1,19 @@
-<h1>sd</h1>>
+<div class="col-md-2">
+</div>
+
+<div class="col-md-8 cmtform cmtshow">
+  <div class="col-xs-1 img">
+    <%= image_tag('avathar.png', size: "40x40") %>
+  </div>
+
+  <% usr = User.find(@comment.user_id)%>
+  <p class="commentby"><%= usr.name.capitalize %></p>
+  <p class="cmt"><%= @comment.comment%></p>
+  <p class="time"> on <%= @comment.created_at.strftime('%b %d, %Y') %> </p>
+  <div>
+  <%= render 'votes/form' %>
+  </div>
+
+  <%= link_to 'Back to Comments', user_question_path(id: @comment.question_id)%> |
+  <%= link_to 'Back to Questions', user_questions_path(user_id: params[:user_id])%>
+</div>

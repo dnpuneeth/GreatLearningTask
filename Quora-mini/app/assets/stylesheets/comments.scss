@@ -20,6 +20,7 @@
   font-family: fantasy;
   font-size: 13px;
   font-weight: 100;
+  border-bottom: 1px soild #ddd;
 }
 
 .status {
@@ -38,4 +39,21 @@
   padding: 0.2em;
   font-family: 'lato';
   letter-spacing: 1px;
+}
+
+.cmtshow {
+  margin-top: 2em;
+}
+
+.img {
+  padding: 1em;
+}
+
+.cmtshow .commentby {
+  margin: 0 0 9px;
+  padding: 1em;
+  font-family: 'lato';
+  font-size: 20px;
+  color: #e6745f;
+  border-bottom: 1px solid #ddd;
 }
