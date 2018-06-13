@@ -8,14 +8,10 @@ class CommentsController < ApplicationController
     redirect_to user_question_path(user_id: @question.user_id, id: @question.id)
   end
 
-=begin
-  def destroy
-    @question = Question.find(params[:question_id]) 
-    @comment = @question.comments.find(params[:id])
-    @comment.destroy
-    redirect_to article_path(@question)
+  def show
+    @comment = Comment.find(params[:id])
+    @votes = @comment.votes.new
   end
-=end
 
   private
 
