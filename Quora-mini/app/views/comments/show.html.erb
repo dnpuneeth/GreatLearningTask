@@ -1,7 +1,10 @@
+
 <div class="col-md-2">
 </div>
 
 <div class="col-md-8 cmtform cmtshow">
+
+  <h2> Comment By: </h2>
   <div class="col-xs-1 img">
     <%= image_tag('avathar.png', size: "40x40") %>
   </div>
@@ -10,7 +13,9 @@
   <p class="commentby"><%= usr.name.capitalize %></p>
   <p class="cmt"><%= @comment.comment%></p>
   <p class="time"> on <%= @comment.created_at.strftime('%b %d, %Y') %> </p>
+  
   <div>
+  <h2> Votes </h2>
   <%= render 'votes/form' %>
   </div>
 

@@ -3,7 +3,6 @@ class Comment < ApplicationRecord
   belongs_to :user
   has_many :votes, dependent: :destroy
 
-  acts_as_votable
   validates :question, presence: true,
                       length: { minimum: 5 }
 

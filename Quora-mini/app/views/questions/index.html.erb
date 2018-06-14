@@ -41,6 +41,7 @@
         <% unless @category.empty? %>
           <h2> All Questions </h2>
           <% @category.each do |qn|%>
+            <p><%= qn.category%></p>
             <div class="col-xs-1 img_index rounded">
               <%= image_tag('avathar.png', size: "40x80") %>
             </div>

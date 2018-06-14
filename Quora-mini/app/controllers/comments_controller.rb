@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
   def show
     @comment = Comment.find(params[:id])
     @votes = @comment.votes.new
+    @count = Vote.all
   end
 
   private
